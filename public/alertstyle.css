@@ -1,0 +1,45 @@
+.callout {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 3;
+    top: 30%;
+    bottom: 30%;
+    left: 30%;
+    right: 30%;
+  }
+  
+  /* Callout header */
+  .callout-header {
+    padding: 25px 15px;
+    background: #555;
+    font-size: 30px;
+    color: white;
+  }
+
+  .callout-text{
+    font-size: 25px;
+  }
+  
+  /* Callout container/body */
+  .callout-container {
+    padding: 15px;
+    background-color: rgb(150, 184, 235);
+    color: black
+  }
+  
+  /* Close button */
+  .closebtn {
+    display: flex;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  /* Change color on mouse-over */
+  .closebtn:hover {
+    color: lightgrey;
+  }

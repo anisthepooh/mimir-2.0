@@ -1,0 +1,22 @@
+
+.Add {
+    display: flex;
+    align-content: center;
+    background-color: rgb(230, 230, 230);
+    margin-top: 10px;
+    margin-right: 0px;
+    padding: 0px;
+    justify-content: end;
+}
+
+.Add:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: rgb(132, 225, 135);
+}
+
+.IconAdd { 
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    margin: auto;
+}

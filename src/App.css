@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+ --LightBlue: #F8F9FA; 
+ --DarkBlue: #1C445D;
+ --altBlue: #E8F5FC;
+ --shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
+ --border: solid 2px var(--altBlue);
+}
+
+
+/* body {
+   
+} */
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+/* Navbar styling */
+.navbar-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  width: 96%;
+  background-color: white;
+  border: var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 100px;
+  padding: 1% 2%;
+  margin-top: 2%;
+}
+
+.nav-element{
+  height: 40px;
+  width: 200px;
+  border: var(--border); 
+  border-radius: 8px;
+  background-color: var(--LightBlue);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--DarkBlue);
+  cursor: pointer;
+  
+  transition: all 200ms;
+}
+
+.nav-text {
+  font-weight: bolder;
+  color: var(--DarkBlue);
+  text-decoration: none;
+  font-size: 1.3rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-element:hover {
+  scale: 1.1; 
+}
+
+.nav-element:active {
+  scale: 1.1; 
+  background-color: var(--DarkBlue);
+  border: var(--border);
+}
+
+.nav-text:active {
+  color: var(--LightBlue);
+}
+
+.selected {
+  scale: 1.1; 
+  background-color: var(--DarkBlue);
+  border: var(--border);
+  
+}
+
+.selected-text {
+  color: var(--LightBlue); 
+}
+
+
+
+/* Inputfields and result*/
+.content-wrapper {
+  width: 100%;
+}
+
+/*Input field */
+.input-container {
+  display: flex;
+  justify-content: center;
+  gap: 2%;
+  margin-top: 2%;
+}
+
+.beregn {
+  display: flex;
+  padding: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  
+}
+
+.addInput{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  border: var(--border);
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: var(--shadow);
+}
+
+.flex-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Text output */
+.Result-wrapper {
+  margin: auto;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;   
+}
+
+.ResultBlock{
+  display: flex;
+  flex-direction: column;
+  border: var(--border);
+  padding: 20px;
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.UsedTest {
+  border: var(--border);
+  padding: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  border-radius: 8px;
+}
+
+p {
+  font-size: 20px; 
+}
+
+
+/* Chart */ 
+.chart-wrapper {
+  margin: auto;
+  padding: 15px;
+  padding-bottom: 40px;
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  height: 100%;
+  background-color: white;
+  border: var(--border);
+  border-radius: 8px;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.print-button{
+  display: flex;
+  justify-content: center;
+  gap: 2%;
+  margin-top: 2%;
+  background-color: white;
+  border: var(--border);
+  border-radius: 8px;
+  align-items: center;
+  box-shadow: var(--shadow);
+  justify-content: center;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 70px;
+}

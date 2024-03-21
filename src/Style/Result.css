@@ -1,0 +1,32 @@
+
+:root {
+    --LightBlue: #F8F9FA; 
+    --DarkBlue: #1C445D;
+    --altBlue: #E8F5FC;
+    --shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
+    --border: solid 2px var(--altBlue);
+   }
+
+
+.result-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border: var(--border);
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.result-heading {
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.result-text {
+    font-size: 24px;
+    font-family: 'Times New Roman', Times, serif;
+}
