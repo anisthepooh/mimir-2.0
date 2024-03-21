@@ -1,7 +1,6 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "https://magdampa.github.io/",
   "private": true,
   "dependencies": {
     "@portabletext/react": "^3.0.11",
