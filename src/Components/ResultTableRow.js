@@ -9,7 +9,6 @@ export default function ResultTableRow({datapoint, index, answers}) {
     id,
     date,
     value,
-    comment,
     answerTitle,
     answerBorder
   } = datapoint
@@ -20,7 +19,6 @@ export default function ResultTableRow({datapoint, index, answers}) {
             <td>{new Date(date).toLocaleDateString('dk-DK', {year: 'numeric', month: 'long', day: 'numeric'})}</td>
             <td>{value} mg/mol</td>
             <td><span className="badge p-4" style={{border: answerBorder}}>{answerTitle}</span></td>
-            <td>{comment}</td>
             <td>
                 <button className='btn btn-outline btn-error'>{t('common.delete')}</button>
             </td>

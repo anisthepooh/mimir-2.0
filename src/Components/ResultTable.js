@@ -19,7 +19,6 @@ function ResultTable({datapoints, setDatapoints, answers }) {
                     <th className=''><div className='flex items-center gap-1'><CalendarDays size={12}/>{t('tested')}</div></th>
                     <th className=''><div className='flex items-center gap-1'><Calculator size={12} />{t('test_value')}</div></th>
                     <th className=''><div className='flex items-center gap-1'><SquareEqual size={12} />{t('common.result')}</div></th>
-                    <th className=''><div className='flex items-center gap-1'><MessageSquare size={12} />{t('common.comment')}</div></th>
                     <th className=''><div className='flex items-center gap-1'><Trash2 size={12} />{t('common.actions')}</div></th>
                 </tr>
                 </thead>

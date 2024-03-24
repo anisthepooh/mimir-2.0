@@ -16,35 +16,32 @@ function Homepage() {
   const [datapoints, setDatapoints] = useState([]);
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
-  //State to change the  model - true = cronical & false = occasional 
-  const [model, setModel] = useState(true);
-  const [logggedIn, setLoggedIn] = useState(true)
-  var normalBorder = 'solid 4px #E8F5FC'
+  const [model, setModel] = useState("cronical");
 
   let screenWidth  = window.innerWidth
   const { t } = useTranslation()
+
   useEffect(() => {
-    if (datapoints.length > 0 && model === 'true') {
-      convertNgMg({datapoints, setDatapoints}, "Cronic")
+    if (datapoints.length > 0 && model === 'cronical') {
+      convertNgMg({datapoints, setDatapoints}, "cronical")
       forceUpdate()
     } 
-    else if (datapoints.length > 0 && model === 'false'){
-      convertNgMg({datapoints, setDatapoints}, "Occational")
+    else if (datapoints.length > 0 && model === 'occational'){
+      convertNgMg({datapoints, setDatapoints}, "occational")
       forceUpdate()
     }
     else {
     }
   }, [datapoints.length]);
 
+
   
-  
-  //const setDatapoints([...datapoints, {Id: datapoint.Id, date: datapoint.date, value: datapoint.value, answerTitle: answers.Title}])
 
   return (
     <div className="pb-16">{
       screenWidth >= 992 ? 
       <div>
-        <DashboardHero model={model} setModel={setModel} logggedIn={logggedIn} setLoggedIn={setLoggedIn} />
+        <DashboardHero model={model} setModel={setModel} setDatapoints={setDatapoints} />
         <InputContainer datapoints={datapoints} setDatapoints={setDatapoints} answers={answers}/>
         <div className='flex gap-4 mt-16 md:block lg:flex p-4 w-full '>
           <div className= 'border border-slate-200 rounded-lg p-4  bg-white '> 

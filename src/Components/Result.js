@@ -18,7 +18,7 @@ function Result({answersTitle, answersText, answersColor, answersCalculation, an
             {answersText}
         </p>
       </div>
-      <div className={'mt-4 text-center rounded-lg p-4 ' + + answersColor}>
+      <div className={'mt-4 text-center rounded-lg p-4 ' + answersColor}>
         <p>
           {answersCalculation}
           <br></br>

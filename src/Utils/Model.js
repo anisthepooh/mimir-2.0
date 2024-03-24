@@ -241,11 +241,11 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
     var totalHours = null
 
 
-    if (ModelType === "Cronic"){
-        cronic();
+    if (ModelType === "cronical"){
+        cronical();
         updateDatapoints();
     }
-    else if (ModelType === "Occational"){
+    else if (ModelType === "occational"){
         calcRatioOCC(); 
         updateDatapoints();
     }
@@ -269,7 +269,7 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
 
 
     //the if-statement that initiate the correct calculations, whether there is one or more specimens. 
-    function cronic(){
+    function cronical(){
         if (datapoints.length === 1 || specimen_last === specimen_base){
             above800(convertSpecimen_base); 
         }

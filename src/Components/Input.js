@@ -14,7 +14,6 @@ function Input({datapoints, setDatapoints, answers}) {
 
   const testDateRef = useRef()
   const testValueRef = useRef()
-  const commentRef = useRef()
   const [date_last, setDate_last] = useState("")
   const { t } = useTranslation()
    
@@ -29,7 +28,6 @@ function Input({datapoints, setDatapoints, answers}) {
   function buttonHandlerAdd(e){
     const date = new Date(testDateRef.current.value)
     const value = testValueRef.current.value
-    const comment = commentRef.current.value
 
     if (datapoints.length > 0){
       setDate_last(new Date(datapoints[datapoints.length-1].date))
@@ -42,7 +40,6 @@ function Input({datapoints, setDatapoints, answers}) {
             Id: uuidv4(), 
             date: date, 
             value: value, 
-            comment: comment,
             answerTitle: answers.Title,
             answerBorder: answers.borderColor
           }]
@@ -50,7 +47,6 @@ function Input({datapoints, setDatapoints, answers}) {
         e.preventDefault()
         testDateRef.current.value = null
         testValueRef.current.value = null
-        commentRef.current.value = null
 
         toast.success( t('toast.result_added'), {
           action: {
@@ -78,13 +74,13 @@ function Input({datapoints, setDatapoints, answers}) {
     <div className=' w-full flex justify-center items-center flex-col p-8 rounded mt-16 border border-slate-200 bg-white' >
       <form onSubmit={e => { e.preventDefault(); }}>
         <div className='flex justify-center flex-col items-center  mt-8 flex-wrap' >
-          <div className='flex justify-between text-center items center border rounded-lg p-2 gap-4 border border-slate-200'>
+          <div className='flex justify-between text-center items center rounded-lg p-2 gap-4 border border-slate-200'>
             {/*adds the number of the next element we will add to the array*/}
             <p className = "px-6 rounded-lg text-center bg-base-300 flex justify-center items-center" id="testnumber" >
               {datapoints.length + 1}
             </p>
             {/*Creates an input field for the user to enter a date based on a dropdown calender, it acceses the values using the useRef from react*/}
-            <input type = "date"  className = "border border-base-300 rounded-lg pl-2 h-13 border border-slate-200" id='date' ref={testDateRef} required />
+            <input type = "date"  className = "rounded-lg pl-2 h-13 border border-slate-200" id='date' ref={testDateRef} required />
             {/*Creates an input field for the user to enter a testvalue, again using useRef to acces it later*/}
             <div className="join">
             <div>
@@ -97,7 +93,6 @@ function Input({datapoints, setDatapoints, answers}) {
                 <option value={false} >USA</option>
               </select>
             </div>
-            <textarea ref={commentRef} type='text' className='textarea textarea-bordered max-h-8 border border-slate-200' placeholder={t('common.comment')} ></textarea>
             {/*Unit display*/}      
             <div className="tooltip" data-tip="hello">
               <button className="btn"><Info /></button>
