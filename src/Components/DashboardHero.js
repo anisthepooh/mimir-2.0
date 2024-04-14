@@ -1,6 +1,7 @@
 import React from 'react'
 import { Download, LogIn } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import {answers} from '../Utils/Model';
 
 function DashboardHero({
   model, 
