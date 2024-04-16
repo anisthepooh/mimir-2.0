@@ -127,6 +127,7 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
 
     //Sets the variable equal to the length of the list minus 1. 
     specimen_last = datapoints.length - 1
+    console.log("datapoints: " + datapoints.length + "Last test date: " + datapoints[specimen_last].date)
 
     //creates variables to use in the results
     var date_base = new Date(datapoints[specimen_base].date)
@@ -216,6 +217,40 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
         },
     }
 
+    // Case7 is for occational use model 'first test'
+    const case7 ={
+        Title: "Første test",
+        Text: `Testværdien den ${date_base_format} er første indtastet test. Indtast endnu en test for at se et resultat`,
+        Calculation: `Modellen har kun en test på nuværende tidspunkt`
+    }
+
+    // Case8 is for occational use model 'no sign of new use'
+    const case8 ={
+        Title: "Intet tegn på nyt indtag af cannabis.",
+        Text: `Der er ikke evidens for nyt cannabis forbrug mellem den ${date_base_format} og den ${date_last_format}. Ved at bruge model sporadisk forbrug vil næste prøve at blive beregnet med udgangspunkt i den nyeste test, dette betyder at det er testen fra den ${date_last_format}`,
+        Calculation: `Modellen har givet følgende resultat baseret på test nr. ${specimen_base + 1} og test nr. ${specimen_last + 1}`
+    }
+
+    // Case9 is for occational use model 'sign of new use'
+    const case9 ={
+        Title: "Tegn på nyt indtag af cannabis.",
+        Text: `Der er evidens for nyt cannabis forbrug mellem den ${date_base_format} og den ${date_last_format}. Næste prøve at blive beregnet med udgangspunkt i testen fra den ${date_last_format}`,
+        Calculation: `Modellen har givet følgende resultat baseret på test nr. ${specimen_base + 1} og test nr. ${specimen_last + 1}`
+    }
+
+    // Case10 of the results describes that the model can't predict anything because the time between the tests is to short. 
+    const case10 = {
+        Title: "Tiden imellem de 2 tests er for kort",
+        Text: "Antal timer imellem testene er for lav til modellen. Foretag derfor en ny test",
+        Calculation: `Modellen kan ikke give et resultat baseret på den korte afsatend mellem følgende datoer ${date_base_format} og ${date_last_format}`
+    }
+
+    // Case11 of the results describes that the model can't predict anything because the time between the tests is to short. 
+    const case11 = {
+        Title: "Værdi er udenfor modellens rækkevidde (0,9 til 132 mg/mol).",
+        Text: `Antal timer imellem testene er for lav til modellen. Foretag derfor en ny test`,
+        Calculation: `Modellen kan ikke give et resultat baseret på den lange afstand mellem følgende datoer ${date_base_format} og ${date_last_format}`
+    }
     
 
     //checks if the difference between the base date and last day is not above 30 days 
@@ -246,6 +281,7 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
         updateDatapoints();
     }
     else if (ModelType === "occational"){
+        console.log('Starting')
         calcRatioOCC(); 
         updateDatapoints();
     }
@@ -452,9 +488,9 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
     function calcRatioOCC() {
 
         if (datapoints.length === 1){
-            answers.Title = 'First test'
-            answers.Text = 'First test'
-            answers.Calculation = 'First test'
+            answers.Title = case7.Title
+            answers.Text = case7.Text
+            answers.Calculation = case7.Calculation
             answers.borderColor = normalBorder
         }
         else{
@@ -477,46 +513,43 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
     }
 
     function calculateOCC(totalHours, roundedRatio) {
-        console.log("Total hours: " + totalHours + " RoundedRatio: " + roundedRatio)
+        console.log("Total hours: " + totalHours + " RoundedRatio: " + roundedRatio + "Param Time: " + param.time[6])
+
         if (totalHours <= param.time[1]) {
-            console.log("If 1")
-            answers.Title = 'for lav'
-            answers.Text = 'for lav'
-            answers.Calculation = 'for lav'
+            console.log("If 0")
+            answers.Title = case10.Title
+            answers.Text = case10.Text
+            answers.Calculation = case10.Calculation
             answers.borderColor = blackBorder
             specimen_base = specimen_last
 
             old_title = 1;
         } 
         else if (totalHours > param.time[1] && totalHours <= param.time[2]) {
-            console.log("If 2")
+            console.log("If 1")
             result(param.max[1], roundedRatio)
         } 
         else if (totalHours > param.time[2] && totalHours <= param.time[3]) {
-            console.log("If 3")
+            console.log("If 2")
             result(param.max[2], roundedRatio)
         } 
         else if (totalHours > param.time[3] && totalHours <= param.time[4]) {
-            console.log("If 4")
+            console.log("If 3")
             result(param.max[3], roundedRatio)
         } 
         else if (totalHours > param.time[4] && totalHours <= param.time[5]) {
-            console.log("If 5")
+            console.log("If 4")
             result(param.max[4], roundedRatio)
         } 
         else if (totalHours > param.time[5] && totalHours <= param.time[6]) {
-            console.log("If 6")
+            console.log("If 5")
             result(param.max[5], roundedRatio)
         } 
-        else if (totalHours > param.time[6] && totalHours <= param.time[7]) {
-            console.log("If 7")
-            result(param.max[6], roundedRatio)
-        } 
-        else if (totalHours > param.time[7] ) {
-            console.log("If max")
-            answers.Title = 'for høj'
-            answers.Text = 'for høj'
-            answers.Calculation = 'for høj'
+        else if (totalHours > param.time[6] ) {
+            console.log("if max")
+            answers.Title = case11.Title
+            answers.Text = case11.Text
+            answers.Calculation = case11.Calculation
             answers.borderColor = blackBorder
             specimen_base = specimen_last
             old_title = 1;
