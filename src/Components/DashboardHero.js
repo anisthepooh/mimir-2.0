@@ -34,7 +34,7 @@ function DashboardHero({
             <button onClick={displayTag} value="occational" className="tab bg-neutral text-base-100">Sporadisk forbrug</button> 
           </div>
           }
-          <button className='btn btn-neutral capitalize btn-sm'> <Download />Download rapport</button>
+          <button onClick={() => window.print()} className='btn btn-neutral capitalize btn-sm'> <Download />Print</button>
         </div>
     </div>
   )

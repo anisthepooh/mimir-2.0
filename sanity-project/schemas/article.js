@@ -51,5 +51,15 @@ export default {
       title: 'Resume',
       type: 'text',
     },
+    {
+      name: 'attachementName',
+      title: 'Attatchment Name',
+      type: 'string',
+    },
+    {
+      name: 'attatchment',
+      title: 'Attatchment',
+      type: 'file',
+    },
   ],
 };

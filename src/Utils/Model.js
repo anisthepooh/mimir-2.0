@@ -127,7 +127,6 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
 
     //Sets the variable equal to the length of the list minus 1. 
     specimen_last = datapoints.length - 1
-    console.log("datapoints: " + datapoints.length + "Last test date: " + datapoints[specimen_last].date)
 
     //creates variables to use in the results
     var date_base = new Date(datapoints[specimen_base].date)
@@ -288,14 +287,14 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
 
     function updateDatapoints(){
         var item = datapoints[datapoints.length - 1];
-        console.log("datapoint to change: " + item.Id + item.value)
-        setDatapoints([...datapoints.filter((x) => x.Id !== item.Id),
+        console.log("datapoint to change: " + item.id + item.value)
+        setDatapoints([...datapoints.filter((x) => x.id !== item.id),
             {
-                Id: item.Id,
+                id: item.id,
                 date: item.date,
                 value: item.value,
                 answerTitle: answers.Title,
-                qantity: [...datapoints].find((a) => a.Id === item.Id).qantity - 1, 
+                qantity: [...datapoints].find((a) => a.id === item.id).qantity - 1, 
                 //If increment + 1 & decrement - 1 
             },
         ])

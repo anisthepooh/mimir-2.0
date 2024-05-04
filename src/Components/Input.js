@@ -37,7 +37,7 @@ function Input({datapoints, setDatapoints, answers}) {
       if (date_last < date || date_last === ''){
         setDatapoints(prevDatapoints => {
           return [...prevDatapoints, { 
-            Id: uuidv4(), 
+            id: uuidv4(), 
             date: date, 
             value: value, 
             answerTitle: answers.Title,
@@ -71,9 +71,9 @@ function Input({datapoints, setDatapoints, answers}) {
   }
   
   return (
-    <div className=' w-full flex justify-center items-center flex-col p-8 rounded mt-16 border border-slate-200 bg-white' >
+    <div className=' w-full flex justify-center items-center flex-col p-8 rounded mt-16 border border-slate-200 bg-white relative' >
       <form onSubmit={e => { e.preventDefault(); }}>
-        <div className='flex justify-center flex-col items-center  mt-8 flex-wrap' >
+        <div className='flex justify-center flex-col items-center  mt-8 flex-wrap relative' >
           <div className='flex justify-between text-center items center rounded-lg p-2 gap-4 border border-slate-200'>
             {/*adds the number of the next element we will add to the array*/}
             <p className = "px-6 rounded-lg text-center bg-base-300 flex justify-center items-center" id="testnumber" >
@@ -94,20 +94,17 @@ function Input({datapoints, setDatapoints, answers}) {
               </select>
             </div>
             {/*Unit display*/}      
-            <div className="tooltip" data-tip="hello">
+            {/* <div className="tooltip" data-tip="hello">
               <button className="btn"><Info /></button>
-            </div>        
-            <button className='btn btn-md' onClick={buttonHandlerAdd}>
+            </div>         */}
+            <button className='btn btn-md capitalize' onClick={buttonHandlerAdd}>
                 <Plus />
                 {t('common.add_result')}
             </button>
           </div>
-          <div className='text' id="output-box"></div>
-          <div className='buttons'>
-            <button className='deleteAll hidden' onClick={buttonHandlerDelete}>
-               {t('common.delete_results')}
-            </button>
-          </div>
+          <button className="btn btn-outline btn-sm btn-error capitalize mt-4 mx-auto" onClick={buttonHandlerDelete}>
+            {t('common.delete_results')}
+          </button>
         </div>
       </form>
       <div className='flex justify-center w-full'>

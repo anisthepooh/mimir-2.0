@@ -1756,6 +1756,11 @@
   "resolved" "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.3.2.tgz"
   "version" "1.3.2"
 
+"@sanity/asset-utils@^1.3.0":
+  "integrity" "sha512-uyIOtGA4Duf+68I3BSbYHY5P+WGftn3QtNJD2Pn7h9WPGYsSrWViIPebE9yRN8N0NHhYj+hDQXaMpVdjG7r+zA=="
+  "resolved" "https://registry.npmjs.org/@sanity/asset-utils/-/asset-utils-1.3.0.tgz"
+  "version" "1.3.0"
+
 "@sanity/client@^6.8.0":
   "integrity" "sha512-SshNs8WfL3PxStBLqgq5FZJAmJO/Nj2IPynPYa+ze+h4SUZU6L/LyIj6848C91nHABICocuUJ3gwZRhK6YNNdw=="
   "resolved" "https://registry.npmjs.org/@sanity/client/-/client-6.8.0.tgz"

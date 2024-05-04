@@ -38,13 +38,13 @@ function Homepage() {
   
 
   return (
-    <div className="pb-16">{
-      screenWidth >= 992 ? 
+    <div className="pb-16">
+      {/* {screenWidth >= 992 ?  */}
       <div>
         <DashboardHero model={model} setModel={setModel} setDatapoints={setDatapoints} />
         <InputContainer datapoints={datapoints} setDatapoints={setDatapoints} answers={answers}/>
-        <div className='flex gap-4 mt-16 md:block lg:flex p-4 w-full '>
-          <div className= 'border border-slate-200 rounded-lg p-4  bg-white '> 
+        <div className='grid grid-cols-1 md:grid-cols-2  gap-4 mt-16 p-4 w-full '>
+          <div className= 'border border-slate-200 rounded-lg p-4   bg-white '> 
             <h2 className='text-2xl font-bold text-center'>Fortolkning </h2>
               <div className=''>
                 <Result 
@@ -56,15 +56,15 @@ function Homepage() {
                 />
               </div>
           </div>
-          <div className='border border-slate-200 rounded-lg p-4 flex-grow max-w-half bg-white '>
+          <div className='border border-slate-200 rounded-lg p-4  bg-white '>
             <h2 className='text-2xl font-bold text-center'>{t('graph_heading')}</h2>
             <ChartView data={datapoints} />
           </div>
         </div>
       </div>
-      :
+      {/* :
       <TooSmallScreen />
-      }
+      } */}
     </div>
   );
 }
