@@ -16,7 +16,7 @@ export default function ResultTableRow({datapoint, index, answers}) {
   return (
         <tr key={id} className=' '>
             <td  >{index + 1}</td>
-            <td>{new Date(date).toLocaleDateString('dk-DK', {year: 'numeric', month: 'long', day: 'numeric'})}</td>
+            <td>{new Date(date).toLocaleDateString('dk-DK', {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false })}</td>
             <td>{value} mg/mol</td>
             <td><span className="badge p-4" style={{border: answerBorder}}>{answerTitle}</span></td>
             <td>

@@ -80,7 +80,7 @@ function Input({datapoints, setDatapoints, answers}) {
               {datapoints.length + 1}
             </p>
             {/*Creates an input field for the user to enter a date based on a dropdown calender, it acceses the values using the useRef from react*/}
-            <input type = "date"  className = "rounded-lg pl-2 h-13 border border-slate-200" id='date' ref={testDateRef} required />
+            <input type = "datetime-local"  className = "rounded-lg pl-2 h-13 border border-slate-200" id='date' ref={testDateRef} required />
             {/*Creates an input field for the user to enter a testvalue, again using useRef to acces it later*/}
             <div className="join">
             <div>

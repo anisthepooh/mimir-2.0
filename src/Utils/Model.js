@@ -227,7 +227,7 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
     // Case8 is for occational use model 'no sign of new use'
     const case8 ={
         Title: "Intet tegn på nyt indtag af cannabis.",
-        Text: `Der er ikke evidens for nyt cannabis forbrug mellem den ${date_base_format} og den ${date_last_format}. Ved at bruge model sporadisk forbrug vil næste prøve at blive beregnet med udgangspunkt i den nyeste test, dette betyder at det er testen fra den ${date_last_format}`,
+        Text: `Der er ikke evidens for nyt cannabis forbrug mellem den ${date_base_format} og den ${date_last_format}. Ved at bruge modellen for sporadisk forbrug vil næste prøve blive beregnet med udgangspunkt i den nyeste test, dette betyder at det er testen fra den ${date_last_format}`,
         Calculation: `Modellen har givet følgende resultat baseret på test nr. ${specimen_base + 1} og test nr. ${specimen_last + 1}`
     }
 
@@ -247,8 +247,8 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
 
     // Case11 of the results describes that the model can't predict anything because the time between the tests is to short. 
     const case11 = {
-        Title: "Værdi er udenfor modellens rækkevidde (0,9 til 132 mg/mol).",
-        Text: `Antal timer imellem testene er for lav til modellen. Foretag derfor en ny test`,
+        Title: "Tiden i mellem de 2 tests er for lang",
+        Text: `Antal timer imellem testene er for høj til modellen. Foretag derfor en ny test som ikke er mere end 120 timer efter seneste test`,
         Calculation: `Modellen kan ikke give et resultat baseret på den lange afstand mellem følgende datoer ${date_base_format} og ${date_last_format}`
     }
     
@@ -559,18 +559,18 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType) {
     function result(max, ratio) {
         console.log("Max: " + max + " ratio: " + ratio)
         if (ratio>max){
-            answers.Title = 'Tegn på nyt indtag'
-            answers.Text = `Der er evidens for nyt forbrug. Næste beregning vil ske med udgangspunkt i testen fra den ${date_last_format}`
-            answers.Calculation = `Modellen har givet følgende resultat baseret på test nr. ${specimen_base + 1} og test nr. ${specimen_last + 1}`
+            answers.Title = case9.Title
+            answers.Text = case9.Text
+            answers.Calculation = case9.Calculation
             answers.borderColor = redBorder
             console.log(ratio, max)
             specimen_base = specimen_last
 
         }
         else{
-            answers.Title = "Intet tegn på nyt indtag af cannabis."
-            answers.Text = `Der er ikke evidens for nyt cannabis forbrug mellem den ${date_base_format} og den ${date_last_format}. Næste prøve vi baseret på den sporadiske model blive beregnet med udgangspunkt i testen fra den ${date_last_format}`
-            answers.Calculation = `Modellen har givet følgende resultat baseret på test nr. ${specimen_base + 1} og test nr. ${specimen_last + 1}`
+            answers.Title = case8.Title
+            answers.Text = case8.Text
+            answers.Calculation = case8.Calculation
             answers.borderColor = greenBorder
             console.log(ratio, max)
             specimen_base = specimen_last
