@@ -1,17 +1,14 @@
-import React from 'react'
-import { useTranslation } from 'react-i18next'
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-export default function ResultTableRow({datapoint, index, answers}) {
-
-  const { t } = useTranslation()
+export default function ResultTableRow({ datapoint, index, deleteTest }) {
+  const { t } = useTranslation();
 
   const {
     id,
     date,
     value,
-    answerTitle,
-    answerBorder
-  } = datapoint
+  } = datapoint;
 
   return (
         <tr key={id} className=' '>
@@ -24,4 +21,5 @@ export default function ResultTableRow({datapoint, index, answers}) {
             </td>
         </tr>
   )
+
 }

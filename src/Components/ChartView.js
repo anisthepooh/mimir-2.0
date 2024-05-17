@@ -16,6 +16,7 @@ import {pick, map, maxBy} from 'lodash'
 import moment from 'moment'
 import { add, format, differenceInCalendarDays, isFuture } from "date-fns";
 import { t } from 'i18next';
+import { LineChartIcon } from 'lucide-react';
 
 
 
@@ -58,12 +59,10 @@ const ChartView = ({data}) => {
   }
 
   if(transformedData.length <= 0) {
-    return<div className='mt-8'>
-        <div className="alert alert-warning">
-          <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-          <span>{t('add_data')}</span>
-        </div>
-      </div>
+    return <div className='border border-dashed border-slate-200 rounded-2xl p-8 mt-8 flex flex-col gap-4 items-center'>
+      <LineChartIcon className="text-slate-200 h-10 w-10" />
+      <p className='text-slate-800 text font-semibold'>Indtast dato'er og prøve resultater for at få vist en graf over resultater</p>
+    </div>
   }
 
 

@@ -14,7 +14,7 @@ function Datapoints({datapoints, setDatapoints}) {
       - the complete array of datapoints
       - the index in the array it is currently mapping
       */}
-        return <Datapoint key={datapoint.Id} datapoint = {datapoint} setDatapoints={setDatapoints} datapoints={datapoints} index={index}/>
+        return <Datapoint key={datapoint.id} datapoint = {datapoint} setDatapoints={setDatapoints} datapoints={datapoints} index={index}/>
     })
   )
 }
