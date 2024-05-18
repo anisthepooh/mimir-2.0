@@ -3,7 +3,13 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import '../Style/Result.css'
 
-function Result({answersTitle, answersText, answersColor, answersCalculation, answersOutside}) {
+function Result({
+  answersTitle, 
+  answersText, 
+  answersColor, 
+  answersCalculation, 
+  answersOutside, 
+}) {
 
   const { t } = useTranslation()
   

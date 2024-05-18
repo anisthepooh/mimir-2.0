@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import Input from './Input'
 
-function InputContainer({datapoints, setDatapoints, answers}) {
+function InputContainer({datapoints, setDatapoints, answers, model, setUnit}) {
   const { t } = useTranslation()
 
   return (
@@ -13,6 +13,8 @@ function InputContainer({datapoints, setDatapoints, answers}) {
                   datapoints={datapoints} 
                   setDatapoints={setDatapoints}
                   answers={answers}
+                  model={model}
+                  setUnit={setUnit}
                 />
           </div>
     </div>

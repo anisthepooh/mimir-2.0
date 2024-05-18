@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export default function ResultTableRow({ datapoint, index, deleteTest }) {
+export default function ResultTableRow({ datapoint, index, model }) {
   const { t } = useTranslation();
 
   const {
@@ -12,13 +12,15 @@ export default function ResultTableRow({ datapoint, index, deleteTest }) {
 
   return (
         <tr key={id} className=' '>
-            <td  >{index + 1}</td>
-            <td>{new Date(date).toLocaleDateString('dk-DK', {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false })}</td>
-            <td>{value} mg/mol</td>
-            <td><span className="badge p-4" style={{border: answerBorder}}>{answerTitle}</span></td>
-            <td>
-                <button className='btn btn-outline btn-error'>{t('common.delete')}</button>
-            </td>
+          <td >{index + 1}</td>
+          <td>
+            {model === "cronical" ? 
+              new Date(date).toLocaleDateString('dk-DK', {year: 'numeric', month: 'long', day: 'numeric' })
+            :
+              new Date(date).toLocaleDateString('dk-DK', {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false })
+            }
+          </td>
+          <td>{value} mg/mol</td>
         </tr>
   )
 
