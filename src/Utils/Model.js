@@ -1,4 +1,5 @@
 import { param } from './Parameters'
+import i18next from 'i18next'
 
 //border colours
 var normalBorder = 'border-4 border-slate-500'
@@ -9,10 +10,10 @@ var blackBorder = 'border-black border-4'
 
 //base answers
 export const answers = {
-    Title: 'Intet resultat at vise',
-    Text: 'Indtast et testsvar for at beregne et resultat',
+    Title: i18next.t('defaultAnswers.Title'),
+    Text: i18next.t('defaultAnswers.Text'),
     borderColor: normalBorder,
-    Calculation: 'Ingen testsvar er indsat',
+    Calculation: i18next.t('defaultAnswers.Calculation'),
     Outside: ''
 } 
 
@@ -25,7 +26,6 @@ var old_title = 0;
  
 //main function
 export function convertNgMg({datapoints, setDatapoints}, ModelType, unit) {
-    console.log(unit)
 
     //Sets the variable equal to the length of the list minus 1. 
     specimen_last = datapoints.length - 1
@@ -39,119 +39,103 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType, unit) {
     //runs the function days between
     daysBetween()
 
-    // Case1 of the results describes that the model can't predict anything yet because of a large value. 
-    const case1 = {
-        Title: "Modellen kan endnu ikke forudsige resultatet.",
-        Text: "Tag næste prøve efter 5 dage.",
-        Calculation: `Modellen har givet følgende resultat baseret på test nr. ${specimen_base + 1}.`
+const case1 = {
+  Title: i18next.t('model.case1.Title'),
+  Text: i18next.t('model.case1.Text'),
+  Calculation: i18next.t('model.case1.Calculation', { testNumber: specimen_base + 1 })
+};
+
+const case2 = {
+  Title: i18next.t('model.case2.Title'),
+  Text: i18next.t('model.case2.Text'),
+  Calculation: i18next.t('model.case2.Calculation', { testNumber: specimen_base + 1 })
+};
+
+const case3 = {
+  Title: i18next.t('model.case3.Title'),
+  Text: i18next.t('model.case3.Text'),
+  Calculation: i18next.t('model.case3.Calculation', { testNumber: specimen_base + 1 })
+};
+
+const case4 = {
+  Title: i18next.t('model.case4.Title'),
+  Text: i18next.t('model.case4.Text', { date: date_base_format }),
+  Calculation: i18next.t('model.case4.Calculation', { testNumber: specimen_base + 1 })
+};
+
+const case5 = {
+  Title: i18next.t('model.case5.Title'),
+  Text: i18next.t('model.case5.Text'),
+  Calculation: i18next.t('model.case5.Calculation', { testNumber: specimen_last + 1 })
+};
+
+const case6 = {
+  Calculation: i18next.t('model.case6.Calculation', { testNumber1: specimen_base + 1, testNumber2: specimen_last + 1 }),
+
+  case6_1: {
+    Title: i18next.t('model.case6.case6_1.Title'),
+    Text: i18next.t('model.case6.case6_1.Text', { date: date_last_format })
+  },
+
+  case6_2: {
+    Title: i18next.t('model.case6.case6_2.Title'),
+    Text: i18next.t('model.case6.case6_2.Text', { date: date_last_format })
+  },
+
+  case6_3: {
+    Title: i18next.t('model.case6.case6_3.Title'),
+    Text: i18next.t('model.case6.case6_3.Text', { date: date_base_format, nextDate: new Date(datapoints[specimen_base].date).addDays(15).toLocaleDateString('dk-DK', { year: 'numeric', month: 'long', day: 'numeric' }) })
+  },
+
+  case6_4: {
+    case6_4_1: {
+      Title: i18next.t('model.case6.case6_4_1.Title'),
+      Text: i18next.t('model.case6.case6_4_1.Text', { date: date_last_format })
+    },
+    case6_4_2: {
+      Title: i18next.t('model.case6.case6_4_2.Title'),
+      Text: i18next.t('model.case6.case6_4_2.Text', { date: date_last_format })
     }
-    // Case2 of the results describes that the model can't predict anything yet. 
-    const case2 = {
-        Title: "Modellen kan endnu ikke forudsige resultatet.",
-        Text: "Tag næste prøve tidligst efter 2 dage.",
-        Calculation: `Modellen har givet følgende resultat baseret på test nr. ${specimen_base + 1}.`
-    }
+  },
 
-    // Case3 of the results describes that the model can't predict anything yet beacuse of the value is less than the cut off point 0,9 mg/mol. 
-    const case3 = {
-        Title: "Værdi er udenfor modellens rækkevidde (0,9 til 132 mg/mol).",
-        Text: "Testværdien er for lav til modellen. Lave værdier i denne størrelse kan tolkes som udskillelse af rester fra tidligere stofbrug, som er ophobet i fedtvævet.",
-        Calculation: `Modellen er uden for rækkevidde baseret på test nr. ${specimen_base + 1}`
-    }
+  case6_5: {
+    Title: i18next.t('model.case6.case6_5.Title'),
+    Text: i18next.t('model.case6.case6_5.Text', { date1: date_base_format, date2: date_last_format }),
+    Calculation: i18next.t('model.case6.case6_5.Calculation', { testNumber1: specimen_base + 1, testNumber2: specimen_last + 1 })
+  }
+};
 
-    // Case4 of the results describes that the model can't predict anything yet beacuse of the value is more than the cut off point 132 mg/mol. 
-    const case4 = {
-        Title: "Værdi er udenfor modellens rækkevidde (0,9 til 132 mg/mol).",
-        Text: `Testværdien den ${date_base_format} er for høj, og der må afventes et fald inden modellen kan anvendes. Gentagne høje værdier kan betragtes som tegn på fortsat stofbrug`,
-        Calculation: `Modellen er uden for rækkevidde baseret på test nr. ${specimen_base + 1}`
-    }
+const case7 = {
+  Title: i18next.t('model.case7.Title'),
+  Text: i18next.t('model.case7.Text', { date: date_base_format }),
+  Calculation: i18next.t('model.case7.Calculation')
+};
 
-    // Case5 of the results describes that the model can't predict anything yet beacuse of the value is less than the cut off point 0,9 mg/mol. 
-    // Case5 adds a warning about "no signs of new use"
-    const case5 ={
-        Title: "Værdi er udenfor modellens rækkevidde (0,9 til 132 mg/mol) ",
-        Text: 'Testværdien er for lav til modellen. Lave værdier i denne størrelse kan tolkes som udskillelse af rester fra tidligere stofbrug, som er ophobet i fedtvævet. BEMÆRK: Der er derfor ikke tegn på nyt indtag',
-        Calculation: `Modellen er uden for rækkevidde baseret på test nr. ${specimen_last + 1}`
-    }
+const case8 = {
+  Title: i18next.t('model.case8.Title'),
+  Text: i18next.t('model.case8.Text', { date1: date_base_format, date2: date_last_format }),
+  Calculation: i18next.t('model.case8.Calculation', { testNumber1: specimen_base + 1, testNumber2: specimen_last + 1 })
+};
 
-    // Case6 descibes which test values the result is based on.
-    // Inside case6 are ohter cases nested. 
-    const case6 = {
-        Calculation: `Modellen har givet følgende resultat baseret på test nr. ${specimen_base + 1} og test nr. ${specimen_last + 1}`,
+const case9 = {
+  Title: i18next.t('model.case9.Title'),
+  Text: i18next.t('model.case9.Text', { date1: date_base_format, date2: date_last_format }),
+  Calculation: i18next.t('model.case9.Calculation', { testNumber1: specimen_base + 1, testNumber2: specimen_last + 1 })
+};
 
-        // Case6_1 desctibes "new sign of use" 
-        case6_1: {
-            Title: `Tegn på nyt indtag`,
-            Text: `Der er evidens for nyt forbrug. Næste beregning vil ske med udgangspunkt i testen fra den ${date_last_format}`
-        }, 
+const case10 = {
+  Title: i18next.t('model.case10.Title'),
+  Text: i18next.t('model.case10.Text'),
+  Calculation: i18next.t('model.case10.Calculation', { date1: date_base_format, date2: date_last_format })
+};
 
-        // Case6_2 desctibes "new sign of use" 
-        case6_2: {
-            Title: "Tegn på nyt indtag.",
-            Text: `Der er evidens for nyt forbrug. Næste beregning vil ske med udgangspunkt i testen fra den ${date_last_format}`
+const case11 = {
+  Title: i18next.t('model.case11.Title'),
+  Text: i18next.t('model.case11.Text'),
+  Calculation: i18next.t('model.case11.Calculation', { date1: date_base_format, date2: date_last_format })
+};
 
-        },
 
-        // Case6_3 desctibes "risk for false positive" 
-        case6_3: {
-            Title: "Risiko for falsk forudsigelse af nyt indtag",
-            Text: `BEMÆRK: Der er mulighed for en falsk positiv forudsigelse  i op til 14 dage fra testen den ${date_base_format}, foretag derfor næste test efter den ${new Date(datapoints[specimen_base].date).addDays(15).toLocaleDateString('dk-DK', {year: 'numeric', month: 'long', day: 'numeric'})}, hvorefter modellen vil være præcis.`
-        }, 
-
-        // Case6_4 desctibes two cases:  case6_4_1: a sign of new use case and case6_4_2: a need for another test case
-        case6_4: {
-            case6_4_1: {
-                Titel: "Tegn på nyt indtag",
-                Text: `Der er evidens for nyt forbrug. Næste beregning vil ske med udgangspunkt i testen fra den ${date_last_format}`
-            },
-            case6_4_2: {
-                Title:"Ny prøve påkrævet. Modellen kan endnu ikke forudsige et resultat. Der er risiko for falsk forudsigelse af nyt indtag.",
-                Text: `BEMÆRK: Resultatet fra modellen er usikkert. Tag næste prøve tidligst efter 2 dage. Næste testsvar vil blive beregnet på baggrund af testen fra den ${date_last_format}. Modellen burde herefter være præcis`
-            }
-        }, 
-
-         // Case6_5 desctibes "no sign of new use" 
-        case6_5: {
-            Title: "Intet tegn på nyt indtag af cannabis.",
-            Text: `Der er ikke evidens for nyt cannabis forbrug mellem den ${date_base_format} og den ${date_last_format}. Næste prøve vil fortsat blive beregnet med udgangspunkt i testen fra den ${date_base_format}`,
-            Calculation: `Modellen har givet følgende resultat baseret på test nr. ${specimen_base + 1} og test nr. ${specimen_last + 1}`
-        },
-    }
-
-    // Case7 is for occational use model 'first test'
-    const case7 ={
-        Title: "Første test",
-        Text: `Testværdien den ${date_base_format} er første indtastet test. Indtast endnu en test for at se et resultat`,
-        Calculation: `Modellen har kun en test på nuværende tidspunkt`
-    }
-
-    // Case8 is for occational use model 'no sign of new use'
-    const case8 ={
-        Title: "Intet tegn på nyt indtag af cannabis.",
-        Text: `Der er ikke evidens for nyt cannabis forbrug mellem den ${date_base_format} og den ${date_last_format}. Ved at bruge modellen for sporadisk forbrug vil næste prøve blive beregnet med udgangspunkt i den nyeste test, dette betyder at det er testen fra den ${date_last_format}`,
-        Calculation: `Modellen har givet følgende resultat baseret på test nr. ${specimen_base + 1} og test nr. ${specimen_last + 1}`
-    }
-
-    // Case9 is for occational use model 'sign of new use'
-    const case9 ={
-        Title: "Tegn på nyt indtag af cannabis.",
-        Text: `Der er evidens for nyt cannabis forbrug mellem den ${date_base_format} og den ${date_last_format}. Næste prøve at blive beregnet med udgangspunkt i testen fra den ${date_last_format}`,
-        Calculation: `Modellen har givet følgende resultat baseret på test nr. ${specimen_base + 1} og test nr. ${specimen_last + 1}`
-    }
-
-    // Case10 of the results describes that the model can't predict anything because the time between the tests is to short. 
-    const case10 = {
-        Title: "Tiden imellem de 2 tests er for kort",
-        Text: "Antal timer imellem testene er for lav til modellen. Foretag derfor en ny test",
-        Calculation: `Modellen kan ikke give et resultat baseret på den korte afsatend mellem følgende datoer ${date_base_format} og ${date_last_format}`
-    }
-
-    // Case11 of the results describes that the model can't predict anything because the time between the tests is to short. 
-    const case11 = {
-        Title: "Tiden i mellem de 2 tests er for lang",
-        Text: `Antal timer imellem testene er for høj til modellen. Foretag derfor en ny test som ikke er mere end 120 timer efter seneste test`,
-        Calculation: `Modellen kan ikke give et resultat baseret på den lange afstand mellem følgende datoer ${date_base_format} og ${date_last_format}`
-    }
     
 
     //checks if the difference between the base date and last day is not above 30 days 
@@ -160,7 +144,7 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType, unit) {
         var daysbetween = (date_last.getTime() - date_base.getTime()) / (1000 * 3600 * 24) 
         answers.Outside = '';
         if (daysbetween >= 31){
-            answers.Outside = 'Spændet på de 30 dage for modellen er overskredet, resultatet er derfor udelukkende vejledende'
+            answers.Outside = i18next.t('defaultAnswers.Outside')
         }
     }
 
@@ -188,14 +172,13 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType, unit) {
         updateDatapoints();
     }
     else if (ModelType === "occational"){
-        console.log('Starting')
+        
         calcRatioOCC(); 
         updateDatapoints();
     }
 
     function updateDatapoints(){
         var item = datapoints[datapoints.length - 1];
-        console.log("datapoint to change: " + item.id + item.value)
         setDatapoints([...datapoints.filter((x) => x.id !== item.id),
             {
                 id: item.id,
@@ -421,7 +404,6 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType, unit) {
             totalHours = (last_date.getTime() - base_date.getTime()) / hours;
             totalHours = Math.round(totalHours)
 
-            console.log("Specimen_base: " + roundedSpecimen_base + " RoundedSpecimen_last: " + roundedSpecimen_last);
 
             let ratio = roundedSpecimen_last / roundedSpecimen_base;
 
@@ -431,10 +413,9 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType, unit) {
     }
 
     function calculateOCC(totalHours, roundedRatio) {
-        console.log("Total hours: " + totalHours + " RoundedRatio: " + roundedRatio + "Param Time: " + param.time[6])
 
         if (totalHours <= param.time[1]) {
-            console.log("If 0")
+            
             answers.Title = case10.Title
             answers.Text = case10.Text
             answers.Calculation = case10.Calculation
@@ -444,27 +425,27 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType, unit) {
             old_title = 1;
         } 
         else if (totalHours > param.time[1] && totalHours <= param.time[2]) {
-            console.log("If 1")
+            
             result(param.max[1], roundedRatio)
         } 
         else if (totalHours > param.time[2] && totalHours <= param.time[3]) {
-            console.log("If 2")
+            
             result(param.max[2], roundedRatio)
         } 
         else if (totalHours > param.time[3] && totalHours <= param.time[4]) {
-            console.log("If 3")
+            
             result(param.max[3], roundedRatio)
         } 
         else if (totalHours > param.time[4] && totalHours <= param.time[5]) {
-            console.log("If 4")
+            
             result(param.max[4], roundedRatio)
         } 
         else if (totalHours > param.time[5] && totalHours <= param.time[6]) {
-            console.log("If 5")
+            
             result(param.max[5], roundedRatio)
         } 
         else if (totalHours > param.time[6] ) {
-            console.log("if max")
+            
             answers.Title = case11.Title
             answers.Text = case11.Text
             answers.Calculation = case11.Calculation
@@ -475,13 +456,13 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType, unit) {
     }
 
     function result(max, ratio) {
-        console.log("Max: " + max + " ratio: " + ratio)
+        
         if (ratio>max){
             answers.Title = case9.Title
             answers.Text = case9.Text
             answers.Calculation = case9.Calculation
             answers.borderColor = redBorder
-            console.log(ratio, max)
+            
             specimen_base = specimen_last
 
         }
@@ -490,7 +471,7 @@ export function convertNgMg({datapoints, setDatapoints}, ModelType, unit) {
             answers.Text = case8.Text
             answers.Calculation = case8.Calculation
             answers.borderColor = greenBorder
-            console.log(ratio, max)
+            
             specimen_base = specimen_last
         }
     }

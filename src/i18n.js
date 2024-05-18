@@ -45,8 +45,94 @@ i18next
           test_date: "Test dato: ",
           too_small_screen: "Skærmstørrelsen er for lille. Bredden på skærmen skal minimum være 992 px. Hvis du bruger en Ipad, prøv at vende den.",
           read_more: "Læs mere",
-        }
-      }
+        },
+        defaultAnswers: {
+          Title: 'Intet resultat at vise',
+          Text: 'Indtast et testsvar for at beregne et resultat',
+          Calculation: 'Ingen testsvar er indsat',
+          Outside: 'Spændet på de 30 dage for modellen er overskredet, resultatet er derfor udelukkende vejledende'
+        },
+        model: {
+          case1: {
+            Title: "Modellen kan endnu ikke forudsige resultatet.",
+            Text: "Tag næste prøve efter 5 dage.",
+            Calculation: "Modellen har givet følgende resultat baseret på test nr. {{testNumber}}."
+          },
+          case2: {
+            Title: "Modellen kan endnu ikke forudsige resultatet.",
+            Text: "Tag næste prøve tidligst efter 2 dage.",
+            Calculation: "Modellen har givet følgende resultat baseret på test nr. {{testNumber}}."
+          },
+          case3: {
+            Title: "Værdi er udenfor modellens rækkevidde (0,9 til 132 mg/mol).",
+            Text: "Testværdien er for lav til modellen. Lave værdier i denne størrelse kan tolkes som udskillelse af rester fra tidligere stofbrug, som er ophobet i fedtvævet.",
+            Calculation: "Modellen er uden for rækkevidde baseret på test nr. {{testNumber}}."
+          },
+          case4: {
+            Title: "Værdi er udenfor modellens rækkevidde (0,9 til 132 mg/mol).",
+            Text: "Testværdien den {{date}} er for høj, og der må afventes et fald inden modellen kan anvendes. Gentagne høje værdier kan betragtes som tegn på fortsat stofbrug",
+            Calculation: "Modellen er uden for rækkevidde baseret på test nr. {{testNumber}}."
+          },
+          case5: {
+            Title: "Værdi er udenfor modellens rækkevidde (0,9 til 132 mg/mol) ",
+            Text: "Testværdien er for lav til modellen. Lave værdier i denne størrelse kan tolkes som udskillelse af rester fra tidligere stofbrug, som er ophobet i fedtvævet. BEMÆRK: Der er derfor ikke tegn på nyt indtag",
+            Calculation: "Modellen er uden for rækkevidde baseret på test nr. {{testNumber}}"
+          },
+          case6: {
+            Calculation: "Modellen har givet følgende resultat baseret på test nr. {{testNumber1}} og test nr. {{testNumber2}}",
+            case6_1: {
+              Title: "Tegn på nyt indtag",
+              Text: "Der er evidens for nyt forbrug. Næste beregning vil ske med udgangspunkt i testen fra den {{date}}"
+            },
+            case6_2: {
+              Title: "Tegn på nyt indtag.",
+              Text: "Der er evidens for nyt forbrug. Næste beregning vil ske med udgangspunkt i testen fra den {{date}}"
+            },
+            case6_3: {
+              Title: "Risiko for falsk forudsigelse af nyt indtag",
+              Text: "BEMÆRK: Der er mulighed for en falsk positiv forudsigelse  i op til 14 dage fra testen den {{date}}, foretag derfor næste test efter den {{nextDate}}, hvorefter modellen vil være præcis."
+            },
+            case6_4_1: {
+              Title: "Tegn på nyt indtag",
+              Text: "Der er evidens for nyt forbrug. Næste beregning vil ske med udgangspunkt i testen fra den {{date}}"
+            },
+            case6_4_2: {
+              Title: "Ny prøve påkrævet. Modellen kan endnu ikke forudsige et resultat. Der er risiko for falsk forudsigelse af nyt indtag.",
+              Text: "BEMÆRK: Resultatet fra modellen er usikkert. Tag næste prøve tidligst efter 2 dage. Næste testsvar vil blive beregnet på baggrund af testen fra den {{date}}. Modellen burde herefter være præcis"
+            },
+            case6_5: {
+              Title: "Intet tegn på nyt indtag af cannabis.",
+              Text: "Der er ikke evidens for nyt cannabis forbrug mellem den {{date1}} og den {{date2}}. Næste prøve vil fortsat blive beregnet med udgangspunkt i testen fra den {{date1}}",
+              Calculation: "Modellen har givet følgende resultat baseret på test nr. {{testNumber1}} og test nr. {{testNumber2}}"
+            }
+          },
+          case7: {
+            Title: "Første test",
+            Text: "Testværdien den {{date}} er første indtastet test. Indtast endnu en test for at se et resultat",
+            Calculation: "Modellen har kun en test på nuværende tidspunkt"
+          },
+          case8: {
+            Title: "Intet tegn på nyt indtag af cannabis.",
+            Text: "Der er ikke evidens for nyt cannabis forbrug mellem den {{date1}} og den {{date2}}. Ved at bruge modellen for sporadisk forbrug vil næste prøve blive beregnet med udgangspunkt i den nyeste test, dette betyder at det er testen fra den {{date2}}",
+            Calculation: "Modellen har givet følgende resultat baseret på test nr. {{testNumber1}} og test nr. {{testNumber2}}"
+          },
+          case9: {
+            Title: "Tegn på nyt indtag af cannabis.",
+            Text: "Der er evidens for nyt cannabis forbrug mellem den {{date1}} og den {{date2}}. Næste prøve at blive beregnet med udgangspunkt i testen fra den {{date2}}",
+            Calculation: "Modellen har givet følgende resultat baseret på test nr. {{testNumber1}} og test nr. {{testNumber2}}"
+          },
+          case10: {
+            Title: "Tiden imellem de 2 tests er for kort",
+            Text: "Antal timer imellem testene er for lav til modellen. Foretag derfor en ny test",
+            Calculation: "Modellen kan ikke give et resultat baseret på den korte afstand mellem følgende datoer {{date1}} og {{date2}}"
+          },
+          case11: {
+            Title: "Tiden i mellem de 2 tests er for lang",
+            Text: "Antal timer imellem testene er for høj til modellen. Foretag derfor en ny test som ikke er mere end 120 timer efter seneste test",
+            Calculation: "Modellen kan ikke give et resultat baseret på den lange afstand mellem følgende datoer {{date1}} og {{date2}}"
+          }
+        },
+      },
     },
     en: {
       translation: {
@@ -85,8 +171,94 @@ i18next
           test_date: "Test date: ",
           too_small_screen: "The computer screen is to small. It must be at least 992px. If you are using an Ipad, try to turn it.",
           read_more: "Read more",
-        }
-      }
+        },
+        defaultAnswers: {
+          Title: 'No results to show',
+          Text: 'Enter a test result to calculate a result',
+          Calculation: 'No test results entered',
+          Outside: 'The 30-day span for the model has been exceeded, therefore the result is only advisory'
+        },
+        model: {
+          case1: {
+            Title: "The model cannot predict the result yet.",
+            Text: "Take the next test in 5 days.",
+            Calculation: "The model has given the following result based on test no. {{testNumber}}."
+          },
+          case2: {
+            Title: "The model cannot predict the result yet.",
+            Text: "Take the next test at least 2 days later.",
+            Calculation: "The model has given the following result based on test no. {{testNumber}}."
+          },
+          case3: {
+            Title: "Value is outside the model's range (0.9 to 132 mg/mol).",
+            Text: "The test value is too low for the model. Low values of this size can be interpreted as the excretion of residues from previous substance use, which are stored in the adipose tissue.",
+            Calculation: "The model is out of range based on test no. {{testNumber}}."
+          },
+          case4: {
+            Title: "Value is outside the model's range (0.9 to 132 mg/mol).",
+            Text: "The test value on {{date}} is too high, and a decrease must be awaited before the model can be used. Repeated high values can be considered as signs of continued substance use.",
+            Calculation: "The model is out of range based on test no. {{testNumber}}."
+          },
+          case5: {
+            Title: "Value is outside the model's range (0.9 to 132 mg/mol) ",
+            Text: "The test value is too low for the model. Low values of this size can be interpreted as the excretion of residues from previous substance use, which are stored in the adipose tissue. NOTE: There is therefore no sign of new intake.",
+            Calculation: "The model is out of range based on test no. {{testNumber}}"
+          },
+          case6: {
+            Calculation: "The model has given the following result based on test no. {{testNumber1}} and test no. {{testNumber2}}",
+            case6_1: {
+              Title: "Sign of new intake",
+              Text: "There is evidence of new use. The next calculation will be based on the test from {{date}}"
+            },
+            case6_2: {
+              Title: "Sign of new intake.",
+              Text: "There is evidence of new use. The next calculation will be based on the test from {{date}}"
+            },
+            case6_3: {
+              Title: "Risk of false prediction of new intake",
+              Text: "NOTE: There is a possibility of a false positive prediction for up to 14 days from the test on {{date}}, so take the next test after {{nextDate}}, after which the model will be accurate."
+            },
+            case6_4_1: {
+              Title: "Sign of new intake",
+              Text: "There is evidence of new use. The next calculation will be based on the test from {{date}}"
+            },
+            case6_4_2: {
+              Title: "New test required. The model cannot yet predict a result. There is a risk of false prediction of new intake.",
+              Text: "NOTE: The result from the model is uncertain. Take the next test at least 2 days later. The next test result will be calculated based on the test from {{date}}. The model should then be accurate."
+            },
+            case6_5: {
+              Title: "No sign of new cannabis use.",
+              Text: "There is no evidence of new cannabis use between {{date1}} and {{date2}}. The next test will still be calculated based on the test from {{date1}}",
+              Calculation: "The model has given the following result based on test no. {{testNumber1}} and test no. {{testNumber2}}"
+            }
+          },
+          case7: {
+            Title: "First test",
+            Text: "The test value on {{date}} is the first entered test. Enter another test to see a result",
+            Calculation: "The model currently has only one test"
+          },
+          case8: {
+            Title: "No sign of new cannabis use.",
+            Text: "There is no evidence of new cannabis use between {{date1}} and {{date2}}. Using the model for sporadic use, the next test will be calculated based on the most recent test, which means it is the test from {{date2}}",
+            Calculation: "The model has given the following result based on test no. {{testNumber1}} and test no. {{testNumber2}}"
+          },
+          case9: {
+            Title: "Sign of new cannabis use.",
+            Text: "There is evidence of new cannabis use between {{date1}} and {{date2}}. The next test will be calculated based on the test from {{date2}}",
+            Calculation: "The model has given the following result based on test no. {{testNumber1}} and test no. {{testNumber2}}"
+          },
+          case10: {
+            Title: "The time between the two tests is too short",
+            Text: "The number of hours between the tests is too low for the model. Therefore, take a new test.",
+            Calculation: "The model cannot provide a result based on the short interval between the following dates {{date1}} and {{date2}}"
+          },
+          case11: {
+            Title: "The time between the two tests is too long",
+            Text: "The number of hours between the tests is too high for the model. Therefore, take a new test no more than 120 hours after the most recent test",
+            Calculation: "The model cannot provide a result based on the long interval between the following dates {{date1}} and {{date2}}"
+          }
+        },
+      },
     }
   }
 })
