@@ -26,7 +26,7 @@ function Navbar({setLanguage, language}) {
             <li><Link to='/kontakt'>{t('contact')}</Link></li>
             <div className="tabs tabs-boxed ml-4">
                 {Object.keys(langOpt).map((lang) => (
-                    <div className="tabs tabs-boxed">
+                    <div className="tabs tabs-boxed" key={lang}>
                     <button onClick={() => i18next.changeLanguage(lang)} className={i18next.resolvedLanguage === lang ? "tab bg-neutral text-base-100" : "tab"}>{langOpt[lang].nativeName}</button> 
                     </div>
                 ))}

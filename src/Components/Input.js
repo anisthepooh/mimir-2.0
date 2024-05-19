@@ -79,12 +79,12 @@ function Input({datapoints, setDatapoints, answers, model, setUnit}) {
             <div className="join">
             <div>
               <div>
-                  <input type="number" className="input input-bordered join-item w-32" placeholder="Testværdi" ref={testValueRef} />
+                  <input type="number" className="input input-bordered join-item w-32" placeholder={t('test_value')} ref={testValueRef} />
                 </div>
               </div>
               <select className="select select-bordered join-item" onChange={(e) => setUnit(e.target.value)}>
                 <option selected value="mg/mol" >mg/mol</option>
-                <option value="usa" >USA</option>
+                <option value="mg/dL" >mg/dL</option>
               </select>
             </div>
             <button className='btn btn-md capitalize' onClick={buttonHandlerAdd}>

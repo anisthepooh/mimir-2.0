@@ -10,6 +10,10 @@ i18next
   resources: {
     da: {
       translation: {
+        license: "©2024 Mimir - Cannabis Test Rapport. Dette websted og dets indhold er beskyttet under GNU Affero General Public License version 3 (AGPL-3.0). Denne software er distribueret i håbet om at være nyttig, men UDEN NOGEN GARANTI; uden endda den stiltiende garanti om SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Se GNU Affero General Public License for flere detaljer.",
+        enterData: "Indtast dato'er og prøve resultater for at få vist en graf over resultater",
+        changingModel: "Du ændrer nu modellen til {{target}}, bekræft for at ændre.",
+        interpretation: "Fortolkning",
         knowledgecenter: "Videnscenter",
         contact: "Kontakt",
         overview_tests: "Overblik over tests resultater",
@@ -24,6 +28,10 @@ i18next
         tested: "Testet den",
         test_value: "Test værdi",
         add_data: "Indtast dato'er og prøve resultater for at få vist en graf over resultater",
+        FAQ: {
+          haveQuestion: "Har du et spørgsmål?",
+          sendEmail: "Så send en mail til understående mail, og vi vil lægge spørgsmålet samt svar op her, så alle kan få glæde af det."
+        },
         toast: {
           result_added: "Test resultat tilført",
           error_date: "Datoen du har indtastet ligger før tidligere indtastet datoer.",
@@ -136,6 +144,10 @@ i18next
     },
     en: {
       translation: {
+        license: "©2024 Mimir - Cannabis Test Report. This website and its content are protected under the GNU Affero General Public License version 3 (AGPL-3.0). This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.",
+        enterData: "Enter dates and test results to display a graph of the results",
+        changingModel: "You are now changing the model to {{target}}, confirm to change.",
+        interpretation: 'Interpretation',
         knowledgecenter: "Knowledgecenter",
         contact: "Contact", 
         overview_tests: "Overview over test results",
@@ -150,6 +162,10 @@ i18next
         tested: "Tested at",
         test_value: "Test value",
         add_data: "Add test results to see the graph",
+        FAQ: {
+          haveQuestion: "Do you have a question?",
+          sendEmail: "Then send an email to the address below, and we will post the question and the answer here so everyone can benefit from it."
+        },
         toast: {
           result_added: "Test resultat added",
           error_date: "The date is before the previous date entered.",

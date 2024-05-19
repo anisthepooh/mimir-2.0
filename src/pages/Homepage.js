@@ -42,7 +42,7 @@ function Homepage() {
         <InputContainer model={model} datapoints={datapoints} setDatapoints={setDatapoints} answers={answers} setUnit={setUnit}/>
         <div className='grid grid-cols-1 md:grid-cols-2  gap-4 mt-16 p-4 w-full '>
           <div className= 'border border-slate-200 rounded-lg p-4   bg-white '> 
-            <h2 className='text-2xl font-bold text-center'>Fortolkning </h2>
+            <h2 className='text-2xl font-bold text-center'>{t('interpretation')} </h2>
               <div className=''>
                 <Result 
                   answersTitle={answers.Title} 

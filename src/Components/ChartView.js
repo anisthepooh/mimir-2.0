@@ -47,7 +47,6 @@ const ChartView = ({data}) => {
   
   function CustomTooltip({ active, payload, label }) {
     if (active) {
-      //console.log(payload)
       return (
         <div className="card bg-base-100 shadow-xl p-4">
           <p className='text-sm'>{t('common.test_date') + moment(label).format("DD. MMMM YYYY")}</p>
@@ -61,7 +60,7 @@ const ChartView = ({data}) => {
   if(transformedData.length <= 0) {
     return <div className='border border-dashed border-slate-200 rounded-2xl p-8 mt-8 flex flex-col gap-4 items-center'>
       <LineChartIcon className="text-slate-200 h-10 w-10" />
-      <p className='text-slate-800 text font-semibold'>Indtast dato'er og prøve resultater for at få vist en graf over resultater</p>
+      <p className='text-slate-800 text font-semibold'>{t('enterData')}</p>
     </div>
   }
 

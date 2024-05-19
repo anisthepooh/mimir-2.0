@@ -1,11 +1,9 @@
 import { PortableText } from '@portabletext/react';
-import axios from 'axios';
 import React, {useState} from 'react'
 import { useQuery } from "react-query";
 import fetchDataFromSanity from '../Utils/DataFetcher';
 import client from '../sanityClient'
 import imageUrlBuilder from '@sanity/image-url'
-import urlBuilder from '@sanity/image-url'
 import moment from 'moment';
 import { useParams } from 'react-router-dom';
 import {buildFileUrl, getFileAsset, getImageDimensions} from '@sanity/asset-utils'

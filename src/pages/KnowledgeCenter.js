@@ -8,6 +8,7 @@ import moment from 'moment';
 import { PortableText } from '@portabletext/react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Loader } from 'lucide-react';
 
 const KnowledgeCenter = () => {
   const QUERY = '*[_type == "article"]{title, "name": author->name, "avatar": author->image,  _id, slug, coverImage, publishedAt, content, resume}' 
@@ -26,6 +27,13 @@ const KnowledgeCenter = () => {
         <header className="flex justify-center items-center py-4 px-6" >
           <h1 className='text-4xl bold'>{t('knowledgecenter')}</h1>
         </header>
+        {isLoading ?
+          <div className="grid grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3">
+            <div/>
+            <Loader className="animate-spin mx-auto h-10 w-10" />
+            <div/>
+          </div>
+          :
         <main className="grid grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3">
           {articleData?.result.map((item) => (
             <div className="bg-white p-6 shadow rounded-lg" key={item._id}>
@@ -67,6 +75,7 @@ const KnowledgeCenter = () => {
             </div>
           ))}
         </main>
+        }
       </section>
     </div>
   )

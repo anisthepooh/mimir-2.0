@@ -24,6 +24,16 @@ export default {
       type: 'text',
     },
     {
+      name: 'email',
+      title: 'email',
+      type: 'string',
+    },
+    {
+      name: 'phone',
+      title: 'Phone',
+      type: 'string',
+    },
+    {
       name: 'image',
       title: 'Image',
       type: 'image',
