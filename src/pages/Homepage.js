@@ -7,6 +7,7 @@ import InputContainer from '../Components/InputContainer';
 import DashboardHero from '../Components/DashboardHero';
 import ChartView from '../Components/ChartView';
 import { useTranslation } from 'react-i18next';
+import useLocalStorage from '../hooks/useLocalStorage'
 
 function Homepage() {
 
@@ -14,7 +15,8 @@ function Homepage() {
   const [datapoints, setDatapoints] = useState([]);
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
-  const [model, setModel] = useState("cronical");
+  const [model, setModel] = useLocalStorage('model', 'cronical');
+
   const [unit, setUnit] = useState("mg/mol")
 
   const { t } = useTranslation()

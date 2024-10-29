@@ -15,6 +15,7 @@ function DashboardHero({
     if (window.confirm( t('changingModel', { target })))  {
       setDatapoints([])
       setModel(e.target.value)
+      window.location.reload()
     }
   }
 
